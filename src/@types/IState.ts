@@ -8,6 +8,6 @@ export interface IState {
   deleteNotes: INote[];
   setSearch: Dispatch<SetStateAction<string>>;
   setNotes: Dispatch<SetStateAction<INote[]>>;
-  setrestoreNotes: Dispatch<SetStateAction<INote[]>>;
+  setRestoreNotes: Dispatch<SetStateAction<INote[]>>;
   setDeleteNotes: Dispatch<SetStateAction<INote[]>>;
 }

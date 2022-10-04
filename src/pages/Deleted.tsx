@@ -4,7 +4,7 @@ import { Container } from "../components/Container/Container";
 import { INote } from "../@types/INote";
 
 // Компонент Корзина,которая будет экспортирована в App
-// Действия удаления и восстановления заметки
+// Действия конечного удаления и восстановления заметки
 export const DeleteNotes = () => {
   const { deleteNotes, setDeleteNotes, setNotes } = useContext(MainContext);
   const restoreNote = (deleteNote: INote) => {

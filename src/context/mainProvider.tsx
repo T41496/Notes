@@ -9,7 +9,7 @@ const initialContext: IState = {
   deleteNotes: [],
   setNotes: (): void => {},
   setSearch: (): void => {},
-  setrestoreNotes: (): void => {},
+  setRestoreNotes: (): void => {},
   setDeleteNotes: (): void => {},
 };
 
@@ -22,7 +22,7 @@ export const MainProvider = ({
 }): JSX.Element => {
   const [search, setSearch] = useState<string>("");
   const [notes, setNotes] = useState<INote[]>([]);
-  const [restoreNotes, setrestoreNotes] = useState<INote[]>([]);
+  const [restoreNotes, setRestoreNotes] = useState<INote[]>([]);
   const [deleteNotes, setDeleteNotes] = useState<INote[]>([]);
 
   return (
@@ -33,7 +33,7 @@ export const MainProvider = ({
         notes,
         setNotes,
         restoreNotes,
-        setrestoreNotes,
+        setRestoreNotes,
         deleteNotes,
         setDeleteNotes,
       }}
