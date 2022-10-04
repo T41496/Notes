@@ -15,6 +15,8 @@ import {
 } from "@mui/icons-material";
 import { INote } from "../../@types/INote";
 
+// Управление карточками заметки
+
 const StyledCard = styled(Card)`
   width: 240px;
   border-radius: 8px;
@@ -27,15 +29,12 @@ export const Item: FC<IItem> = ({ note, type, restoreFunc, deleteFunc }) => {
   const [isEditable, setIsEditable] = useState(false);
   const [note1, setNote1] = useState<INote>(note);
 
+  // Редактор
   const handleEdit = () => {
     setIsEditable(!isEditable);
   };
 
-  // const handleClickAway = () => {
-  //   if (note.heading || note.text)
-  //     setNotes((prevArr) => [newNote, ...prevArr]);
-  //   setNewNote({ ...defaultNote, id: uuid() });
-  // };
+  // Отображение изменений в заметке
   const onTextChange = (
     e: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
   ) => {
@@ -44,6 +43,7 @@ export const Item: FC<IItem> = ({ note, type, restoreFunc, deleteFunc }) => {
   };
 
   return (
+    // Карточки
     <StyledCard>
       <CardContent>
         <TextField
