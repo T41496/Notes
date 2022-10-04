@@ -85,7 +85,7 @@ export const HeaderBar = ({ onOpenMenu }: { onOpenMenu: () => void }) => {
         </IconButton>
 
         <img src={logo} alt="logo" style={{ height: 40, width: 40 }} />
-        <Heading>Заметки от Tony Wills</Heading>
+        <Heading>Notes 1.0 by Tony Wills</Heading>
         <Search>
           <SearchIconWrapper>
             <SearchIcon />

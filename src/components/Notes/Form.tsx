@@ -47,7 +47,9 @@ const Form: FC = () => {
   // Ввод текста
   const onTextChange = (
     e: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
-  ) => setNewNote({ ...newNote, [e.target.name]: e.target.value });
+  ) => {
+    setNewNote({ ...newNote, [e.target.name]: e.target.value });
+  };
   return (
     <ClickAwayListener onClickAway={handleClickAway}>
       <Container ref={containerRef}>

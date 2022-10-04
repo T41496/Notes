@@ -1,13 +1,19 @@
-import { Card, CardActions, CardContent, Typography } from "@mui/material";
+import { useState, ChangeEvent } from "react";
+import {
+  Card,
+  CardActions,
+  Button,
+  CardContent,
+  TextField,
+} from "@mui/material";
+import { styled } from "@mui/material/styles";
+import { IItem } from "../../@types/IItem";
+import { FC } from "react";
 import {
   DeleteOutlineOutlined as Delete,
   RestoreFromTrashOutlined as Restore,
 } from "@mui/icons-material";
-import { FC } from "react";
-import { styled } from "@mui/material/styles";
-import { IItem } from "../../@types/IItem";
-
-//После ввода заголовка и содержания создаются заметки в виде отдельных карточек
+import { INote } from "../../@types/INote";
 
 const StyledCard = styled(Card)`
   width: 240px;
@@ -16,17 +22,53 @@ const StyledCard = styled(Card)`
   border: 1px solid #e0e0e0;
   box-shadow: none;
 `;
+
 export const Item: FC<IItem> = ({ note, type, restoreFunc, deleteFunc }) => {
+  const [isEditable, setIsEditable] = useState(false);
+  const [note1, setNote1] = useState<INote>(note);
+
+  const handleEdit = () => {
+    setIsEditable(!isEditable);
+  };
+
+  // const handleClickAway = () => {
+  //   if (note.heading || note.text)
+  //     setNotes((prevArr) => [newNote, ...prevArr]);
+  //   setNewNote({ ...defaultNote, id: uuid() });
+  // };
+  const onTextChange = (
+    e: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
+  ) => {
+    console.log(e.target.value);
+    setNote1({ ...note1, [e.target.name]: e.target.value });
+  };
+
   return (
     <StyledCard>
       <CardContent>
-        {/* название заметки */}
-        <Typography>{note.heading}</Typography>
-        {/* содержание заметки */}
-        <Typography>{note.text}</Typography>
+        <TextField
+          id="standard-basic"
+          disabled={!isEditable}
+          value={note1.heading}
+          name="heading"
+          variant="standard"
+          onChange={(e) => onTextChange(e)}
+          onBlur={() => setIsEditable(false)}
+        />
+        <TextField
+          id="standard-basic"
+          disabled={!isEditable}
+          value={note1.text}
+          name="text"
+          variant="standard"
+          onChange={(e) => onTextChange(e)}
+          onBlur={() => setIsEditable(false)}
+        />
       </CardContent>
-      {/* Иконки(+ их действия) корзины и восстановления в начальной странице и корзине */}
       <CardActions>
+        <Button size="small" onClick={handleEdit}>
+          Edit
+        </Button>
         {type === "home" && (
           <>
             <Delete
